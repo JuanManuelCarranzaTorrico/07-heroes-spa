@@ -1,4 +1,7 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { authReducer } from '../../auth/context/authReducer';
+import { AuthContext } from '../../auth/context/AuthContext';
+import { useContext } from 'react';
 
 
 export const Navbar = () => {
@@ -8,7 +11,7 @@ export const Navbar = () => {
             replace: true
         });
     }
-    
+    const {user} = useContext(AuthContext);
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
             
@@ -47,7 +50,7 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
                     <span className='nav-item nav-link text-primary'>
-                        Ikki
+                        {user?.name}
                         </span>
                     <button
                         className='nav-item nav-link btn'
