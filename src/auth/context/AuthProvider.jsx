@@ -33,10 +33,17 @@ const init = ()=>{
       dispatch(action)
     }
 
+    const logout = () =>{
+      localStorage.removeItem('user');
+      const action = { type: types.logout};
+      dispatch(action)
+    }
+
   return (
     <AuthContext.Provider value={{
       ...authState,
-      login: login
+      login: login,
+      logout: logout
     }}>
         {children}
     </AuthContext.Provider>
